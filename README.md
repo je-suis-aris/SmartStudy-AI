@@ -343,10 +343,6 @@ Le projet inclut un banc d'essai reproductible qui mesure le comportement réel 
 </tr>
 </table>
 
-<p align="justify">
-La méthodologie complète, les CSV bruts et le protocole de reproduction sont décrits dans <code>experiments/HOW_TO_RUN.md</code>. La section « <a href="#-reproduction-des-expériences">Reproduction des expériences</a> » ci-dessous résume les commandes nécessaires.
-</p>
-
 ---
 
 ## Technologies et bibliothèques
@@ -389,66 +385,27 @@ Le projet suit la disposition standard Maven d'une application web Java EE, avec
 
 ```text
 smartstudy-ai2/
-│
-├── README.md
-├── LICENSE
-├── pom.xml
-│
-├── images/                                ← diagrammes pour le README
-│   ├── 01_diagramme_cas_utilisation.png   ← rendu de diagrams/01_use_case.puml
-│   ├── 02_architecture_couches.png        ← rendu de diagrams/02_architecture.puml
-│   ├── 03_diagramme_sequence_quiz.png     ← rendu de diagrams/03_ai_flow.puml
-│   ├── 04_parcours_etudiant.png           ← rendu de diagrams/04_journey.puml
-│   ├── 05_schema_base_donnees.png         ← rendu de diagrams/05_schema_base_donnees.puml
-│   ├── exp2_latence_dao.svg               ← copie depuis experiments/.../figures/
-│   ├── exp3_distribution_scores.svg
-│   ├── exp4_qualite_questions.svg
-│   ├── exp5_compression_resumes.svg
-│   ├── exp6_courbe_apprentissage.svg
-│   ├── exp8_couverture_adaptative.svg
-│   └── exp9_scalabilite_dashboard.svg
-│
-├── database/
-│   ├── smartstudy_ai.sql                  ← schéma initial + données de démo
-│   └── experiments_schema.sql             ← migrations idempotentes (banc d'essai)
-│
-├── src/
-│   ├── main/
-│   │   ├── java/com/smartstudy/
-│   │   │   ├── dao/                       ← UserDAO, CourseDAO, MaterialDAO, …
-│   │   │   ├── filter/                    ← AuthFilter
-│   │   │   ├── model/                     ← POJO : User, Course, Material, …
-│   │   │   ├── service/                   ← AiStudyService, AdaptiveFlashcardService, …
-│   │   │   ├── servlet/                   ← 30+ servlets (Login, Dashboard, AiTutor, …)
-│   │   │   ├── util/                      ← DBConnection, PdfTextExtractor, EmailUtil
-│   │   │   └── experiments/               ← banc d'essai (Seeder, Runner, CSV, Stats)
-│   │   ├── resources/
-│   │   └── webapp/
-│   │       ├── assets/                    ← CSS / JS / images
-│   │       ├── WEB-INF/
-│   │       │   ├── web.xml
-│   │       │   ├── lib/                   ← jars hors Maven si nécessaire
-│   │       │   └── views/
-│   │       │       ├── student/           ← dashboard, materials, quiz, flashcards, …
-│   │       │       └── admin/             ← dashboard, users, chat, student-details
-│   │       └── index.jsp
-│   └── test/                              ← JUnit
-│
-└── experiments/
-    ├── HOW_TO_RUN.md                      ← procédure complète seeder → runner → SVG
-    ├── README.md
-    ├── make_figures.py                    ← matplotlib → SVG en français
-    └── paper/
-        ├── SmartStudyAI_paper_v2.docx     ← article scientifique (format SCSS)
-        ├── SmartStudyAI_paper_v2.md
-        ├── HOW_TO_USE.md
-        ├── diagrams/                      ← cinq sources PlantUML
-        │   ├── 01_use_case.puml
-        │   ├── 02_architecture.puml
-        │   ├── 03_ai_flow.puml
-        │   ├── 04_journey.puml
-        │   └── 05_schema_base_donnees.puml
-        └── figures/                       ← CSV bruts + SVG produits par le runner
+src/
+├── main/
+│   ├── java/com/smartstudy/
+│   │   ├── dao/                       ← UserDAO, CourseDAO, MaterialDAO, …
+│   │   ├── filter/                    ← AuthFilter
+│   │   ├── model/                     ← POJO: User, Course, Material, …
+│   │   ├── service/                   ← AiStudyService, AdaptiveFlashcardService, …
+│   │   ├── servlet/                   ← 30+ servlets: Login, Dashboard, AiTutor, …
+│   │   ├── util/                      ← DBConnection, PdfTextExtractor, EmailUtil
+│   │   └── experiments/               ← Experimental benchmark: Seeder, Runner, CSV, Stats
+│   ├── resources/
+│   └── webapp/
+│       ├── assets/                    ← CSS, JavaScript and interface images
+│       ├── WEB-INF/
+│       │   ├── web.xml                ← Web application configuration
+│       │   ├── lib/                   ← External JAR files, if needed
+│       │   └── views/
+│       │       ├── student/           ← Student pages: dashboard, materials, quiz, flashcards, …
+│       │       └── admin/             ← Admin pages: dashboard, users, chat, student details
+│       └── index.jsp                  ← Application entry page
+└── test/                              ← Unit tests
 ```
 
 ---
