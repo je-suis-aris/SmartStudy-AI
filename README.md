@@ -380,7 +380,7 @@ Le projet inclut un banc d'essai reproductible qui mesure le comportement réel 
 ## Organisation du projet
 
 <p align="justify">
-Le projet suit la disposition standard Maven d'une application web Java EE, avec un répertoire <code>experiments/</code> dédié au banc d'essai expérimental et un répertoire <code>images/</code> contenant les diagrammes utilisés dans cette documentation.
+Le projet suit la disposition standard Maven d'une application web Java EE:
 </p>
 
 ```text
@@ -498,31 +498,6 @@ Cela produit `target/smartstudy-ai.war`. Déployez-le dans Tomcat 10 :
 ```
 http://localhost:8081/smartstudy-ai/
 ```
-
----
-
-## Reproduction des expériences
-
-<p align="justify">
-Le banc d'essai produit, en quatre commandes, l'ensemble des CSV bruts, du <code>summary.md</code> récapitulatif et des SVG en français qui figurent dans l'article scientifique.
-</p>
-
-```bash
-# 1. Peupler le corpus expérimental (déterministe, ~30 s)
-mvn -q compile exec:java -Dexec.mainClass=com.smartstudy.experiments.ExperimentSeeder
-
-# 2. Lancer les 10 expériences (CSV produits dans experiments/<timestamp>/)
-mvn -q compile exec:java -Dexec.mainClass=com.smartstudy.experiments.ExperimentRunner
-
-# 3. (Optionnel) Tracer les figures SVG en français
-py -m pip install matplotlib pandas
-py experiments/make_figures.py experiments/<timestamp>/
-```
-
-<p align="justify">
-La graine pseudo-aléatoire est fixée à <code>EXP_SEED = 20260606</code>, ce qui garantit que deux exécutions successives produisent strictement les mêmes données dans la base. Les détails complets — variables d'environnement, format des CSV, dépannage — figurent dans <code>experiments/HOW_TO_RUN.md</code>.
-</p>
-
 ---
 
 ## Perspectives d'évolution
