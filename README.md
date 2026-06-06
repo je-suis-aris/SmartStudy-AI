@@ -184,7 +184,7 @@ Ce diagramme d'activité résume le parcours complet d'un étudiant. Après auth
 ### Schéma de la base de données
 
 <p align="center">
-  <img src="images/05_schema_base_donnees.png" alt="Schéma de la base de données" width="850">
+  <img src="images/05_schema_base_donnees.jpeg" alt="Schéma de la base de données" width="850">
 </p>
 
 <p align="justify">
