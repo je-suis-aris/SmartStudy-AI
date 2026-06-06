@@ -1,0 +1,287 @@
+<%@ page import="com.smartstudy.model.User" %>
+
+<%
+    User currentUser = (User) session.getAttribute("user");
+    String ctx = request.getContextPath();
+    String uri = request.getRequestURI();
+
+    boolean isLoggedIn = currentUser != null;
+    boolean isAdmin = currentUser != null && "ADMIN".equalsIgnoreCase(currentUser.getRole());
+    boolean isAdminPage = uri.startsWith(ctx + "/admin");
+
+    String activeDashboard = uri.equals(ctx + "/dashboard") ? "active" : "";
+    String activeMaterials = uri.equals(ctx + "/materials") ? "active" : "";
+    String activePlanner = uri.equals(ctx + "/planner") ? "active" : "";
+    String activeAssessment = uri.equals(ctx + "/assessment") ? "active" : "";
+    String activeFlashcards = uri.equals(ctx + "/flashcards") ? "active" : "";
+    String activeInsights = uri.equals(ctx + "/insights") ? "active" : "";
+    String activeStats = uri.equals(ctx + "/stats") ? "active" : "";
+    String activeProfile = uri.equals(ctx + "/profile") ? "active" : "";
+    String activeSupport = uri.equals(ctx + "/chat") ? "active" : "";
+    String activeAiCoach = uri.equals(ctx + "/ai-coach") ? "active" : "";
+
+    String activeAdminDashboard = uri.equals(ctx + "/admin/dashboard") ? "active" : "";
+    String activeAdminUsers = uri.equals(ctx + "/admin/users") ? "active" : "";
+    String activeAdminCourses = uri.equals(ctx + "/admin/courses") ? "active" : "";
+    String activeAdminChat = uri.equals(ctx + "/admin/chat") ? "active" : "";
+%>
+
+<nav class="smart-nav">
+    <div class="smart-nav-inner">
+
+        <a class="smart-brand" href="<%=ctx%>/home">
+            <img src="<%=ctx%>/assets/img/Logo.png?v=100" alt="SmartStudy AI" class="smart-brand-logo">
+            <span>SmartStudy <strong>AI</strong></span>
+        </a>
+
+        <div class="smart-nav-links">
+
+            <% if (!isLoggedIn) { %>
+
+                <a href="<%=ctx%>/login" class="<%=uri.equals(ctx + "/login") ? "active" : ""%>">
+                    Sign in
+                </a>
+
+                <a href="<%=ctx%>/register" class="create-link <%=uri.equals(ctx + "/register") ? "active-create" : ""%>">
+                    Create account
+                </a>
+
+            <% } else if (isAdmin && isAdminPage) { %>
+
+                <a href="<%=ctx%>/admin/dashboard" class="<%=activeAdminDashboard%>">
+                    Admin dashboard
+                </a>
+
+                <a href="<%=ctx%>/admin/users" class="<%=activeAdminUsers%>">
+                    Users
+                </a>
+
+                <a href="<%=ctx%>/admin/courses" class="<%=activeAdminCourses%>">
+                    Courses
+                </a>
+
+                <a href="<%=ctx%>/admin/chat" class="<%=activeAdminChat%>">
+                    Messages
+                </a>
+
+                <a href="<%=ctx%>/dashboard" class="student-view-link">
+                    Student view
+                </a>
+
+                <a href="<%=ctx%>/logout">
+                    Logout
+                </a>
+
+            <% } else { %>
+
+                <a href="<%=ctx%>/dashboard" class="<%=activeDashboard%>">
+                    Dashboard
+                </a>
+
+                <a href="<%=ctx%>/materials" class="<%=activeMaterials%>">
+                    Materials
+                </a>
+
+                <a href="<%=ctx%>/planner" class="<%=activePlanner%>">
+                    Planner
+                </a>
+
+                <a href="<%=ctx%>/assessment" class="<%=activeAssessment%>">
+                    Assessment
+                </a>
+
+                <a href="<%=ctx%>/flashcards" class="<%=activeFlashcards%>">
+                    Flashcards
+                </a>
+
+                <a href="<%=ctx%>/insights" class="<%=activeInsights%>">
+                    Insights
+                </a>
+
+                <a href="<%=ctx%>/stats" class="<%=activeStats%>">
+                    Stats
+                </a>
+
+                <a href="<%=ctx%>/profile" class="<%=activeProfile%>">
+                    Profile
+                </a>
+
+                <a href="<%=ctx%>/chat" class="<%=activeSupport%>">
+                    Support
+                </a>
+
+                <a href="<%=ctx%>/ai-coach" class="<%=activeAiCoach%>">
+                    AI Coach
+                </a>
+
+                <% if (isAdmin) { %>
+                    <a href="<%=ctx%>/admin/dashboard" class="admin-view-link">
+                        Admin view
+                    </a>
+                <% } %>
+
+                <a href="<%=ctx%>/logout">
+                    Logout
+                </a>
+
+            <% } %>
+
+        </div>
+    </div>
+</nav>
+
+<style>
+    .smart-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: 68px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid #e5e7eb;
+        display: flex;
+        align-items: center;
+        padding: 0 34px;
+        font-family: 'Geist', Arial, sans-serif;
+    }
+
+    .smart-nav-inner {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+    }
+
+    .smart-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-right: auto;
+        color: #111827;
+        font-size: 1.12rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .smart-brand:hover {
+        color: #111827;
+        text-decoration: none;
+    }
+
+    .smart-brand strong {
+        color: #1f3a5f;
+    }
+
+    .smart-brand-logo {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        object-fit: contain;
+        display: block;
+    }
+
+    .smart-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .smart-nav-links a {
+        color: #6b7280;
+        font-size: 0.84rem;
+        font-weight: 600;
+        padding: 8px 11px;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: 0.18s ease;
+        white-space: nowrap;
+    }
+
+    .smart-nav-links a:hover {
+        color: #111827;
+        background: #f3f4f6;
+        text-decoration: none;
+    }
+
+    .smart-nav-links a.active {
+        color: #1f3a5f;
+        background: #eef3f9;
+    }
+
+    .smart-nav-links .create-link {
+        background: #111827;
+        color: white;
+        padding-left: 14px;
+        padding-right: 14px;
+        margin-left: 6px;
+    }
+
+    .smart-nav-links .create-link:hover,
+    .smart-nav-links .active-create {
+        background: #1f3a5f;
+        color: white;
+    }
+
+    .smart-nav-links .admin-view-link {
+        background: #1f3a5f;
+        color: white !important;
+        font-weight: 800;
+        margin-left: 6px;
+    }
+
+    .smart-nav-links .admin-view-link:hover {
+        background: #10243d;
+        color: white !important;
+    }
+
+    .smart-nav-links .student-view-link {
+        background: #1f3a5f;
+        color: white !important;
+        font-weight: 800;
+        margin-left: 6px;
+    }
+
+    .smart-nav-links .student-view-link:hover {
+        background: #10243d;
+        color: white !important;
+    }
+
+    @media (max-width: 1200px) {
+        .smart-nav {
+            padding: 0 18px;
+        }
+
+        .smart-nav-links {
+            overflow-x: auto;
+            max-width: 74vw;
+            scrollbar-width: none;
+        }
+
+        .smart-nav-links::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    @media (max-width: 760px) {
+        .smart-nav {
+            height: auto;
+            min-height: 68px;
+            padding: 12px 18px;
+        }
+
+        .smart-nav-inner {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .smart-nav-links {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+    }
+</style>

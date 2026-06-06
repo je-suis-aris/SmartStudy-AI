@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app
+        xmlns="https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+        version="6.0">
+
+    <display-name>SmartStudy AI</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.smartstudy.filter.AuthFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.HomeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.RegisterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.DashboardServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MaterialsServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.MaterialsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MaterialsServlet</servlet-name>
+        <url-pattern>/materials</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GenerateQuestionsServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.GenerateQuestionsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GenerateQuestionsServlet</servlet-name>
+        <url-pattern>/generate-questions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AssessmentServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AssessmentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AssessmentServlet</servlet-name>
+        <url-pattern>/assessment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TakeQuizServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.TakeQuizServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TakeQuizServlet</servlet-name>
+        <url-pattern>/take-quiz</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SubmitQuizServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.SubmitQuizServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SubmitQuizServlet</servlet-name>
+        <url-pattern>/submit-quiz</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PlannerServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.PlannerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PlannerServlet</servlet-name>
+        <url-pattern>/planner</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FlashcardsServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.FlashcardsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FlashcardsServlet</servlet-name>
+        <url-pattern>/flashcards</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GenerateWeakFlashcardsServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.GenerateWeakFlashcardsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GenerateWeakFlashcardsServlet</servlet-name>
+        <url-pattern>/generate-weak-flashcards</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InsightsServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.InsightsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InsightsServlet</servlet-name>
+        <url-pattern>/insights</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StatsServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.StatsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StatsServlet</servlet-name>
+        <url-pattern>/stats</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.ProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AiTutorServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AiTutorServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AiTutorServlet</servlet-name>
+        <url-pattern>/ai-tutor</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AdminDashboardServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminUsersServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AdminUsersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminUsersServlet</servlet-name>
+        <url-pattern>/admin/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminRequestDecisionServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AdminRequestDecisionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminRequestDecisionServlet</servlet-name>
+        <url-pattern>/admin/admin-request-decision</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminStudentDetailsServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AdminStudentDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminStudentDetailsServlet</servlet-name>
+        <url-pattern>/admin/student-details</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminCoursesServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AdminCoursesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminCoursesServlet</servlet-name>
+        <url-pattern>/admin/courses</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StudentChatServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.StudentChatServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentChatServlet</servlet-name>
+        <url-pattern>/chat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminChatServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AdminChatServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminChatServlet</servlet-name>
+        <url-pattern>/admin/chat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NextBestActionServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.NextBestActionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NextBestActionServlet</servlet-name>
+        <url-pattern>/generate-next-action</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AiCoachServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AiCoachServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AiCoachServlet</servlet-name>
+        <url-pattern>/ai-coach</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ExplainWeakTopicServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.ExplainWeakTopicServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ExplainWeakTopicServlet</servlet-name>
+        <url-pattern>/explain-weak-topic</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.ForgotPasswordServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <url-pattern>/forgot-password</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GeneratePersonalPlanServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.GeneratePersonalPlanServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GeneratePersonalPlanServlet</servlet-name>
+        <url-pattern>/generate-personal-plan</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddManualQuestionServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.AddManualQuestionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddManualQuestionServlet</servlet-name>
+        <url-pattern>/add-manual-question</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GenerateInsightsAiServlet</servlet-name>
+        <servlet-class>com.smartstudy.servlet.GenerateInsightsAiServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GenerateInsightsAiServlet</servlet-name>
+        <url-pattern>/generate-insights-ai</url-pattern>
+    </servlet-mapping>
+
+</web-app>
