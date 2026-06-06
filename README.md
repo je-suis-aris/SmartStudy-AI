@@ -451,48 +451,6 @@ smartstudy-ai2/
         └── figures/                       ← CSV bruts + SVG produits par le runner
 ```
 
-### Comment créer le dossier `images/` pour ce README
-
-> **Étape 1 — créer le dossier**
->
-> À la racine du dépôt cloné, créez un répertoire nommé exactement `images` (minuscule, sans accent).
-
-> **Étape 2 — rendre les cinq diagrammes PlantUML en PNG**
->
-> Téléchargez `plantuml.jar` depuis [plantuml.com/download](https://plantuml.com/download), puis exécutez à la racine du projet :
->
-> ```powershell
-> java -jar plantuml.jar -tpng -Sdpi=200 -o "..\..\..\images" experiments\paper\diagrams\*.puml
-> ```
->
-> ou un par un, en renommant la sortie pour qu'elle corresponde exactement aux noms attendus par le README :
->
-> | Source PlantUML | Nom de sortie attendu dans `images/` |
-> |---|---|
-> | `01_use_case.puml` | `01_diagramme_cas_utilisation.png` |
-> | `02_architecture.puml` | `02_architecture_couches.png` |
-> | `03_ai_flow.puml` | `03_diagramme_sequence_quiz.png` |
-> | `04_journey.puml` | `04_parcours_etudiant.png` |
-> | `05_schema_base_donnees.puml` | `05_schema_base_donnees.png` |
-
-> **Étape 3 — copier les figures expérimentales**
->
-> Copiez les SVG suivants depuis `experiments/paper/figures/` vers `images/` :
->
-> ```powershell
-> Copy-Item experiments\paper\figures\exp2_latence_dao.svg          images\
-> Copy-Item experiments\paper\figures\exp3_distribution_scores.svg  images\
-> Copy-Item experiments\paper\figures\exp4_qualite_questions.svg    images\
-> Copy-Item experiments\paper\figures\exp5_compression_resumes.svg  images\
-> Copy-Item experiments\paper\figures\exp6_courbe_apprentissage.svg images\
-> Copy-Item experiments\paper\figures\exp8_couverture_adaptative.svg images\
-> Copy-Item experiments\paper\figures\exp9_scalabilite_dashboard.svg images\
-> ```
-
-> **Étape 4 — vérifier**
->
-> Ouvrez `README.md` sur GitHub. Les douze images doivent apparaître sans message « image not found ». Si une seule est manquante, vérifiez son nom de fichier — il doit correspondre **exactement** (casse comprise) à celui référencé dans le README.
-
 ---
 
 ## Structure de la base de données
@@ -628,7 +586,7 @@ Plusieurs axes d'amélioration sont identifiés. À court terme, le remplacement
 
 ## Bibliographie
 
-> Les références suivantes ont été utilisées pour la conception, l'évaluation et la rédaction de l'article scientifique associé au projet. Elles sont citées au format IEEE dans l'article complet (`experiments/paper/SmartStudyAI_paper_v2.docx`).
+> Les références suivantes ont été utilisées pour la conception, l'évaluation et la rédaction de l'article scientifique associé au projet. Elles sont citées au format IEEE dans l'article complet.
 
 [1] K. C. Yarlagadda, *AI in Education: Personalized Learning and Intelligent Tutoring Systems*, European Journal of Computer Science and Information Technology, vol. 13, n° 32, p. 15–27, 2025.
 
@@ -674,5 +632,5 @@ Plusieurs axes d'amélioration sont identifiés. À court terme, le remplacement
 
 <p align="center">
   <em>Pour toute question concernant le code, la base de données ou les expériences,<br>
-  consultez le fichier <code>experiments/HOW_TO_RUN.md</code> ou contactez les auteurs via les <em>issues</em> GitHub.</em>
+  consultez le fichier ou contactez les auteurs GitHub.</em>
 </p>
